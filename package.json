@@ -1,0 +1,24 @@
+{
+  "name": "intoto",
+  "description": "intoto - latin for all together. One place to get all your relevant information viz news, entertainment, weather, transport, etc",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Rahul Sharma",
+      "email": "rahuldsharma@hotmail.co.uk"
+    },
+	{
+      "name": "Gaurav Nagar",
+      "email": "gauravnagar@hotmail.com"
+    }],
+  "main": "src/server/index.js",
+  "scripts": {
+    "start": "node --inspect .",
+  },
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+   
+  }
+}
