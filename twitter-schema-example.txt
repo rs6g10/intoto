@@ -1,0 +1,3 @@
+https://api.twitter.com/1.1/trends/place.json?id=1
+
+OAuth realm="https://api.twitter.com/1.1/trends/place.json",id="1",oauth_consumer_key="FTeb6O0aEP8AFEwrtQkbnnrcZ",oauth_token="100732076-KR5d2aM7rBTTM4ZvmgDMdIRcOlJZ5Xua3ahDLMc3",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1485208598",oauth_nonce="L48smn",oauth_version="1.0",oauth_signature="yX1%2BavwVrB%2BOmheMJESQ4OT3j34%3D"
