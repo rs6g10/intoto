@@ -7,18 +7,17 @@
       "name": "Rahul Sharma",
       "email": "rahuldsharma@hotmail.co.uk"
     },
-	{
+    {
       "name": "Gaurav Nagar",
       "email": "gauravnagar@hotmail.com"
-    }],
+    }
+  ],
   "main": "src/server/index.js",
   "scripts": {
-    "start": "node --inspect .",
+    "start": "node --inspect ."
   },
   "dependencies": {
-    
+    "express": "^4.14.0"
   },
-  "devDependencies": {
-   
-  }
+  "devDependencies": {}
 }
