@@ -9,7 +9,7 @@ const parseJson = (res) => {
 }
 
 const checkHttpStatus = (res) => {
-    if (res.status >= 200 && res.state < 300) {
+    if (res.status >= 200 && res.status < 300) {
         return res;
     }
     else {
@@ -19,10 +19,10 @@ const checkHttpStatus = (res) => {
     }
 }
 
-const getHttpResponse = (req, res, url) => {
+const getHttpResponse = (res, url) => {
     getJson(url).then(checkHttpStatus).then(parseJson).then(response => {
         if (response) {
-            res.status(200).json(response);
+            res.json(response);
         }
         else {
             res.status(404);
@@ -36,3 +36,5 @@ const getHttpResponse = (req, res, url) => {
         }
     })
 };
+
+module.exports = {getHttpResponse};

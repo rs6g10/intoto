@@ -1,23 +1,30 @@
+const url = require('url');
+const routes = require('express').Router();
 const fetch = require('node-fetch');
 const _ = require('lodash');
 const constants = require('../../../constants');
 const urlConstants = require('./news.constants');
-const url = require('url');
+const getHttpResponse = require('../../../utils/http-utils').getHttpResponse;
 
-const newsSourcesUrl = url.format({protocol: urlConstants.protocol, host: urlConstants.host, pathname: urlConstants.sourcePathname});
-const newsApiArticleSourceUrl = url.format({protocol: urlConstants.protocol, host: urlConstants.host, pathname: urlConstants.articlePathname});
+
+const newsSourcesUrl = url.format({
+    protocol: urlConstants.protocol,
+    host: urlConstants.host,
+    pathname: urlConstants.sourcePathname
+});
+const newsApiArticleSourceUrl = url.format({
+    protocol: urlConstants.protocol,
+    host: urlConstants.host,
+    pathname: urlConstants.articlePathname
+});
 
 let newsSources = {};
 const getNewsSources = (res) => {
-    if (newsSources.length > 0) {
-        res.json(newsSources);
-    }
-    fetch(newsSourcesUrl)
-        .then((res) => res.json())
-        .then((json) => {
-            newsSources = json;
-            res.json(json);
-        });
+    /*if (newsSources.length > 0) {
+     res.json(newsSources);
+     }*/
+
+    getHttpResponse(res, newsSourcesUrl);
 };
 
 const getNewsCategories = (res) => {
@@ -25,13 +32,19 @@ const getNewsCategories = (res) => {
         res.json(_.uniqBy(_.map(newsSources.sources, constants.category)));
     }
     else {
-        fetch(newsSourcesUrl)
-            .then((res) => res.json())
+        getHttpResponse({}, res, newsSourcesUrl)
             .then((json) => {
                 res.json((json.sources.map((source) => {
                     return {id: source.id, category: source.category}
                 })));
             });
+        /*fetch(newsSourcesUrl)
+         .then((res) => res.json())
+         .then((json) => {
+         res.json((json.sources.map((source) => {
+         return {id: source.id, category: source.category}
+         })));
+         });*/
     }
 };
 
