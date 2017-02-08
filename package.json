@@ -14,16 +14,18 @@
   ],
   "main": "src/server/index.js",
   "scripts": {
-    "start": "nodemon --inspect ."
+    "start": "webpack --progress && nodemon --inspect ."
   },
   "dependencies": {
     "asyncawait": "^1.0.6",
     "compression": "^1.6.2",
     "express": "^4.14.0",
     "lodash": "^4.17.4",
-    "node-fetch": "^1.6.3"
+    "node-fetch": "^1.6.3",
+    "react": "^15.4.2"
   },
   "devDependencies": {
+    "jsx-loader": "^0.13.2",
     "nodemon": "^1.11.0"
   }
 }
