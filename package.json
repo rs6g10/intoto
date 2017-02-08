@@ -22,7 +22,9 @@
     "express": "^4.14.0",
     "lodash": "^4.17.4",
     "node-fetch": "^1.6.3",
-    "react": "^15.4.2"
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.2.1"
   },
   "devDependencies": {
     "jsx-loader": "^0.13.2",

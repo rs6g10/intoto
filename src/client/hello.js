@@ -3,9 +3,11 @@ var React = require('react');
 var Hello = React.createClass(
     {
         render: function () {
-            return(
+            return (
                 <div><h1>Chutia rahul</h1></div>
             );
         }
     }
 );
+
+module.exports = Hello;

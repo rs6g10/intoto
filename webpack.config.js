@@ -13,7 +13,9 @@ module.exports = [
             publicPath: publicPath
         },
         module: {
-            loaders: commonLoaders.concat({ test: /\.css$/, loader: "style-loader!css-loader" })
-        }
+            loaders: commonLoaders.concat({ test: /\.css$/, loader: "style-loader!css-loader" }),
+
+        },
+
     }
 ];
