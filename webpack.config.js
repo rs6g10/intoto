@@ -1,6 +1,19 @@
-const path =  require("path");
-const commonLoaders = [{ test: /\.js$/, loader: "jsx-loader" }];
-const assetsPath = path.join(__dirname,'public','assets');
+const path = require("path");
+
+const commonLoaders = [
+    {
+        test: /\.js$/,
+        loader: "jsx-loader"
+    },
+    {
+        test: /\.js$/,
+        loader: "babel-loader",
+        options: {
+            presets: ["es2015","react"]
+        },
+        exclude: /node_modules/
+    }];
+const assetsPath = path.join(__dirname, 'public', 'assets');
 const publicPath = 'assets/';
 
 module.exports = [
@@ -13,7 +26,7 @@ module.exports = [
             publicPath: publicPath
         },
         module: {
-            loaders: commonLoaders.concat({ test: /\.css$/, loader: "style-loader!css-loader" }),
+            loaders: commonLoaders.concat({test: /\.css$/, loader: "style-loader!css-loader"})
 
         },
 
