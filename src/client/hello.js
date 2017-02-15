@@ -4,20 +4,14 @@ import DisplayWeather from "./weather";
 export default class Hello extends React.Component {
     constructor(props) {
         super(props);
-        this.cities = ['london', 'paris', 'oslo'];
-        //set initialState
-        this.state = {
-            londonWeatherData: undefined,
-            parisWeatherData: undefined,
-            osloWeatherData: undefined,
-        };
+        this.cities = ['london', 'paris', 'oslo', 'berlin', 'dublin', 'chandigarh', 'mumbai', 'surat', 'jaipur', 'new delhi', 'frankfurt'];
+        //set Initial state
+        this.state = {};
 
         this.cities.forEach((city) => {
-            this.fetchAsync(`api/weather/${city}`,`${city}WeatherData`);
+            this.state[`${city}WeatherData`] =  undefined;
+            this.fetchAsync(`api/weather/${city}`, `${city}WeatherData`);
         });
-        // this.fetchAsync('api/weather/london', 'londonWeatherData');
-        // this.fetchAsync('api/weather/paris', 'parisWeatherData');
-        // this.fetchAsync('api/weather/oslo', 'osloWeatherData');
     }
 
     async fetchAsync(url, propName) {
@@ -32,20 +26,16 @@ export default class Hello extends React.Component {
     }
 
     render() {
-            debugger;
-        // const londonWeatherDataMessage = this.state.londonWeatherData;
-        // const parisWeatherDataMessage = this.state.parisWeatherData;
-        // const osloWeatherDataMessage = this.state.osloWeatherData;osloWeatherData
         return (
-        <div>
-            {
-                this.cities.map((city,idx)=> {
-                    <div key={idx} className="col-6 col-sm-4">
-                        {this.state[`${city}WeatherData`]
-                            ? <DisplayWeather weatherData={this.state[`${city}WeatherData`]}/> :
-                            <h1>Loading...</h1>}</div>
-            })
-            }
-        </div>);
+            <div>
+                {
+                    this.cities.map((city, idx)=> {
+                        return (
+                            <div key={idx} className="col-6 col-sm-4">
+                                <DisplayWeather weatherData={this.state[`${city}WeatherData`]}/>
+                            </div>)
+                    })
+                }
+            </div>);
     }
 }

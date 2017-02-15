@@ -2,9 +2,8 @@ import React from 'react';
 
 const DisplayWeather = (props) => {
     const {weatherData} = props;
-
     if(!weatherData) {
-        return (<div>Loading weather...</div>);
+        return (<h1>Loading...</h1>);
     }
 
     const firstDataSet = weatherData.list[0];
