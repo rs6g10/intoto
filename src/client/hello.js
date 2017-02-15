@@ -1,22 +1,36 @@
-import React from 'react';
+import React from "react";
+import DisplayWeather from "./weather";
 
-const Hello = () => {
-    // const someData = fetch('/api/weather/london')
-    //     .then((resp) => {
-    //         return resp.json()
-    // }).then((json) => {
-    //     debugger;
-    //     return json;
-    //     });
-    let londonWeatherData = undefined;
-    (async() => {
-        const weatherApi = await fetch('api/weather/london');
-        londonWeatherData = await weatherApi.json();
-    })();
-    debugger;
-    return (
-        <div><h1>{londonWeatherData ? londonWeatherData.message : 'Gaurav'}</h1></div>
-    );
-};
+export default class Hello extends React.Component {
+    constructor(props) {
+        super(props);
+        //set initialState
+        this.state = {
+            londonWeatherData: undefined
+        };
+        this.fetchAsync('api/weather/london');
+    }
 
-export default Hello;
+    async fetchAsync(url) {
+        const response = await(fetch(url));
+        if (response.status >= 300) {
+            throw new Error('invalid response');
+        } else {
+            const responseJson = await response.json();
+            this.setState({londonWeatherData: responseJson});
+            return responseJson;
+        }
+    }
+
+    render() {
+        const londonWeatherDataMessage = this.state.londonWeatherData;
+        return (
+            <div>
+                <div>
+                    {londonWeatherDataMessage
+                        ? <DisplayWeather weatherData={londonWeatherDataMessage}/> :
+                        <h1>Loading...</h1>}</div>
+            </div>
+        );
+    }
+}
